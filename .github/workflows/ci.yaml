@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main, staging, trying]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        rust:
+          - stable
+          - beta
+          - nightly
+        include:
+          # Minimum supported rust version (MSRV)
+          # Note this needs to be new enough to build the examples as well as
+          # the library itself.
+          - name: MSRV
+            rust: 1.61.0
+
+    name: "build (${{ matrix.name || matrix.rust }})"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ matrix.rust }}
+          override: true
+          components: rustfmt, clippy
+
+      - name: rustfmt
+        run: cargo fmt -- --check
+
+      - name: build
+        run: cargo xtask ci

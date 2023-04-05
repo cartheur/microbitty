@@ -1,0 +1,8 @@
+[workspace]
+members = [
+  "microbit-common",
+  "microbit",
+  "microbit-v2",
+  "examples/*",
+  "xtask",
+]
