@@ -59,7 +59,7 @@ A guide to embedded development with Rust on the _microbit_ using this crate can
 Other useful resources:
 - [micro:bit developer community](https://tech.microbit.org)
 - [micro:bit hardware overview](https://tech.microbit.org/hardware/)
-- [nrf-hal](https://github.com/cartheur/microbitty-hal#readme) the hardware abstraction layer (HAL) this repository is based on
+- [microbitty-hal](https://github.com/cartheur/microbitty-hal#readme) the hardware abstraction layer (HAL) this repository is based on
 
 ## License
 
